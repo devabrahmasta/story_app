@@ -82,4 +82,19 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get select_language => 'Bahasa';
+
+  @override
+  String get tap_to_select => 'Ketuk untuk pilih gambar';
+
+  @override
+  String get register_success => 'Registrasi berhasil, silakan masuk';
+
+  @override
+  String get error_field_required => 'Kolom ini wajib diisi';
+
+  @override
+  String get error_invalid_email => 'Masukkan email yang valid';
+
+  @override
+  String get error_password_min => 'Password minimal 8 karakter';
 }

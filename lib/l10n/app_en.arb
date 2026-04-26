@@ -25,5 +25,8 @@
   "take_photo": "Take Photo",
   "select_language": "Language",
   "tap_to_select": "Tap to select image",
-  "register_success": "Registration successful, please login"
+  "register_success": "Registration successful, please login",
+  "error_field_required": "This field is required",
+  "error_invalid_email": "Enter a valid email",
+  "error_password_min": "Password must be at least 8 characters"
 }

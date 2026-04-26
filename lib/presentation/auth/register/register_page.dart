@@ -92,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Name is required';
+                          return l10n.error_field_required;
                         }
                         return null;
                       },
@@ -110,10 +110,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Email is required';
+                          return l10n.error_field_required;
                         }
                         if (!value.contains('@')) {
-                          return 'Enter a valid email';
+                          return l10n.error_invalid_email;
                         }
                         return null;
                       },
@@ -141,10 +141,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Password is required';
+                              return l10n.error_field_required;
                             }
                             if (value.length < 8) {
-                              return 'Password must be at least 8 characters';
+                              return l10n.error_password_min;
                             }
                             return null;
                           },

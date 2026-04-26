@@ -247,6 +247,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get select_language;
+
+  /// No description provided for @tap_to_select.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to select image'**
+  String get tap_to_select;
+
+  /// No description provided for @register_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration successful, please login'**
+  String get register_success;
+
+  /// No description provided for @error_field_required.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get error_field_required;
+
+  /// No description provided for @error_invalid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email'**
+  String get error_invalid_email;
+
+  /// No description provided for @error_password_min.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters'**
+  String get error_password_min;
 }
 
 class _AppLocalizationsDelegate

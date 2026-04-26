@@ -9,8 +9,23 @@ import '../../auth/auth_provider.dart';
 import '../../settings/localization_provider.dart';
 import '../../widgets/story_card.dart';
 
-class StoryListPage extends StatelessWidget {
+class StoryListPage extends StatefulWidget {
   const StoryListPage({super.key});
+
+  @override
+  State<StoryListPage> createState() => _StoryListPageState();
+}
+
+class _StoryListPageState extends State<StoryListPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      if (mounted) {
+        context.read<StoryListProvider>().fetchStories();
+      }
+    });
+  }
 
   void _showLogoutDialog(BuildContext context, AppLocalizations l10n) {
     showDialog(

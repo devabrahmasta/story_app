@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:story_app/l10n/app_localizations.dart';
 import 'login_provider.dart';
 import '../auth_provider.dart';
+import '../../story/list/story_list_provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -35,6 +36,7 @@ class _LoginPageState extends State<LoginPage> {
 
     if (mounted) {
       if (success) {
+        context.read<StoryListProvider>().fetchStories();
         context.read<AuthProvider>().login();
       } else if (provider.errorMessage != null) {
         ScaffoldMessenger.of(
@@ -105,10 +107,10 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Email is required';
+                          return l10n.error_field_required;
                         }
                         if (!value.contains('@')) {
-                          return 'Enter a valid email';
+                          return l10n.error_invalid_email;
                         }
                         return null;
                       },
@@ -136,10 +138,10 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Password is required';
+                              return l10n.error_field_required;
                             }
                             if (value.length < 8) {
-                              return 'Password must be at least 8 characters';
+                              return l10n.error_password_min;
                             }
                             return null;
                           },

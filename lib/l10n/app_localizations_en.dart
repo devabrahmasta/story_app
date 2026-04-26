@@ -82,4 +82,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get select_language => 'Language';
+
+  @override
+  String get tap_to_select => 'Tap to select image';
+
+  @override
+  String get register_success => 'Registration successful, please login';
+
+  @override
+  String get error_field_required => 'This field is required';
+
+  @override
+  String get error_invalid_email => 'Enter a valid email';
+
+  @override
+  String get error_password_min => 'Password must be at least 8 characters';
 }

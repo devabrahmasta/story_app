@@ -25,5 +25,8 @@
   "take_photo": "Ambil Foto",
   "select_language": "Bahasa",
   "tap_to_select": "Ketuk untuk pilih gambar",
-  "register_success": "Registrasi berhasil, silakan masuk"
+  "register_success": "Registrasi berhasil, silakan masuk",
+  "error_field_required": "Kolom ini wajib diisi",
+  "error_invalid_email": "Masukkan email yang valid",
+  "error_password_min": "Password minimal 8 karakter"
 }

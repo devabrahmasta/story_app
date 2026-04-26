@@ -7,9 +7,7 @@ import '../../../data/repositories/story_repository.dart';
 class StoryListProvider extends ChangeNotifier {
   final StoryRepository _storyRepository;
 
-  StoryListProvider(this._storyRepository) {
-    fetchStories();
-  }
+  StoryListProvider(this._storyRepository);
 
   ResultState _state = ResultState.loading;
   ResultState get state => _state;

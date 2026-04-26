@@ -25,8 +25,12 @@ void main() {
       providers: [
         Provider<AuthPreferences>(create: (_) => authPreferences),
         ProxyProvider<AuthPreferences, ApiService>(
-          update: (context, prefs, previous) =>
-              ApiService(prefs, onUnauthorized: () {}),
+          update: (context, prefs, previous) {
+            final service = ApiService(prefs);
+            service.onUnauthorized = () =>
+                context.read<AuthProvider>().logout();
+            return service;
+          },
         ),
         ProxyProvider2<ApiService, AuthPreferences, AuthRepository>(
           update: (context, api, prefs, previous) => AuthRepository(api, prefs),
@@ -71,21 +75,8 @@ void main() {
   );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<ApiService>().onUnauthorized = () {
-      context.read<AuthProvider>().logout();
-    };
-  }
 
   @override
   Widget build(BuildContext context) {
