@@ -118,10 +118,6 @@ class StoryListPage extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () => context.push('/stories/add'),
-          ),
-          IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () => _showLogoutDialog(context, l10n),
           ),
@@ -197,6 +193,11 @@ class StoryListPage extends StatelessWidget {
               );
           }
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.push('/stories/add'),
+        tooltip: l10n.add_story_title,
+        child: const Icon(Icons.add),
       ),
     );
   }
