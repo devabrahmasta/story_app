@@ -37,11 +37,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
     if (mounted) {
       if (success) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Registration successful, please login'),
-          ),
-        );
+        final l10n = AppLocalizations.of(context)!;
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.register_success)));
         context.pop();
       } else if (provider.errorMessage != null) {
         ScaffoldMessenger.of(

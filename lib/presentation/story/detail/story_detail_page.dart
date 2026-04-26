@@ -127,7 +127,7 @@ class StoryDetailPage extends StatelessWidget {
                             context,
                           ).textTheme.bodyLarge?.copyWith(height: 1.5),
                         ),
-                        const SizedBox(height: 48), // Bottom padding
+                        const SizedBox(height: 48),
                       ],
                     ),
                   ),

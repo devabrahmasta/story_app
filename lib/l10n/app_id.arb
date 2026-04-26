@@ -23,5 +23,7 @@
   "upload_success": "Cerita berhasil diunggah!",
   "logout_cancel": "Batal",
   "take_photo": "Ambil Foto",
-  "select_language": "Bahasa"
+  "select_language": "Bahasa",
+  "tap_to_select": "Ketuk untuk pilih gambar",
+  "register_success": "Registrasi berhasil, silakan masuk"
 }

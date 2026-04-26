@@ -82,7 +82,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    // Wire up ApiService 401 callback to AuthProvider logout
     context.read<ApiService>().onUnauthorized = () {
       context.read<AuthProvider>().logout();
     };

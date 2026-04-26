@@ -136,7 +136,6 @@ class _AddStoryPageState extends State<AddStoryPage> {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text(l10n.upload_success)));
-        // Refresh story list before popping
         context.read<StoryListProvider>().fetchStories();
         context.pop();
       } else if (provider.errorMessage != null) {
@@ -193,7 +192,7 @@ class _AddStoryPageState extends State<AddStoryPage> {
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                                  'Tap to select image',
+                                  l10n.tap_to_select,
                                   style: TextStyle(color: colorScheme.outline),
                                 ),
                               ],

@@ -23,5 +23,7 @@
   "upload_success": "Story uploaded successfully!",
   "logout_cancel": "Cancel",
   "take_photo": "Take Photo",
-  "select_language": "Language"
+  "select_language": "Language",
+  "tap_to_select": "Tap to select image",
+  "register_success": "Registration successful, please login"
 }
