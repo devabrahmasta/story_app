@@ -21,5 +21,7 @@
   "no_stories": "Belum ada cerita",
   "retry_button": "Coba Lagi",
   "upload_success": "Cerita berhasil diunggah!",
-  "logout_cancel": "Batal"
+  "logout_cancel": "Batal",
+  "take_photo": "Ambil Foto",
+  "select_language": "Bahasa"
 }

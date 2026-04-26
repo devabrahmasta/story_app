@@ -76,4 +76,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get logout_cancel => 'Batal';
+
+  @override
+  String get take_photo => 'Ambil Foto';
+
+  @override
+  String get select_language => 'Bahasa';
 }

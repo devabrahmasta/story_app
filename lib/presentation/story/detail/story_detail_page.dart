@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
 import 'package:story_app/l10n/app_localizations.dart';
+import '../../../core/utils/result_state.dart';
 import 'story_detail_provider.dart';
-import '../list/story_list_provider.dart';
 
 class StoryDetailPage extends StatelessWidget {
   final String storyId;

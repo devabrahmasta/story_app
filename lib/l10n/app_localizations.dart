@@ -235,6 +235,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel'**
   String get logout_cancel;
+
+  /// No description provided for @take_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Take Photo'**
+  String get take_photo;
+
+  /// No description provided for @select_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get select_language;
 }
 
 class _AppLocalizationsDelegate

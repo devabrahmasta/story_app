@@ -21,5 +21,7 @@
   "no_stories": "No stories yet",
   "retry_button": "Retry",
   "upload_success": "Story uploaded successfully!",
-  "logout_cancel": "Cancel"
+  "logout_cancel": "Cancel",
+  "take_photo": "Take Photo",
+  "select_language": "Language"
 }

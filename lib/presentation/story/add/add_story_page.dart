@@ -5,8 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:story_app/l10n/app_localizations.dart';
+import 'package:camera/camera.dart';
 import 'add_story_provider.dart';
 import '../list/story_list_provider.dart';
+import 'camera_screen.dart';
 
 class AddStoryPage extends StatefulWidget {
   const AddStoryPage({super.key});
@@ -51,6 +53,32 @@ class _AddStoryPageState extends State<AddStoryPage> {
     }
   }
 
+  Future<void> _openCamera() async {
+    final cameras = await availableCameras();
+    if (!mounted) return;
+    final XFile? result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => CameraScreen(cameras: cameras)),
+    );
+    if (result != null && mounted) {
+      final dir = Directory.systemTemp;
+      final targetPath =
+          '${dir.absolute.path}/temp_${DateTime.now().millisecondsSinceEpoch}.jpg';
+      final compressedFile = await FlutterImageCompress.compressAndGetFile(
+        result.path,
+        targetPath,
+        quality: 80,
+        minWidth: 1024,
+        minHeight: 1024,
+      );
+      if (compressedFile != null && mounted) {
+        context.read<AddStoryProvider>().setImageFile(
+          File(compressedFile.path),
+        );
+      }
+    }
+  }
+
   void _showImageSourceBottomSheet(
     BuildContext context,
     AppLocalizations l10n,
@@ -70,7 +98,7 @@ class _AddStoryPageState extends State<AddStoryPage> {
                 title: Text(l10n.camera_button),
                 onTap: () {
                   Navigator.pop(context);
-                  _pickImage(ImageSource.camera);
+                  _openCamera();
                 },
               ),
               ListTile(
@@ -177,7 +205,7 @@ class _AddStoryPageState extends State<AddStoryPage> {
                     children: [
                       Expanded(
                         child: OutlinedButton.icon(
-                          onPressed: () => _pickImage(ImageSource.camera),
+                          onPressed: _openCamera,
                           icon: const Icon(Icons.camera_alt),
                           label: Text(l10n.camera_button),
                         ),

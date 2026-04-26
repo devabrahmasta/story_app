@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/api/api_result.dart';
+import '../../../core/utils/result_state.dart';
 import '../../../data/models/story.dart';
 import '../../../data/repositories/story_repository.dart';
-
-enum ResultState { loading, noData, hasData, error }
 
 class StoryListProvider extends ChangeNotifier {
   final StoryRepository _storyRepository;

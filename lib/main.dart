@@ -13,6 +13,7 @@ import 'presentation/auth/login/login_provider.dart';
 import 'presentation/auth/register/register_provider.dart';
 import 'presentation/story/add/add_story_provider.dart';
 import 'presentation/story/list/story_list_provider.dart';
+import 'presentation/settings/localization_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,6 +59,9 @@ void main() {
               AddStoryProvider(context.read<StoryRepository>()),
           update: (context, storyRepo, previous) => AddStoryProvider(storyRepo),
         ),
+        ChangeNotifierProvider<LocalizationProvider>(
+          create: (_) => LocalizationProvider(),
+        ),
         Provider<AppRouter>(
           create: (context) => AppRouter(context.read<AuthProvider>()),
         ),
@@ -88,20 +92,25 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     final appRouter = context.read<AppRouter>();
 
-    return MaterialApp.router(
-      title: 'Story App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [Locale('en', ''), Locale('id', '')],
-      routerConfig: appRouter.router,
+    return Consumer<LocalizationProvider>(
+      builder: (context, locProvider, child) {
+        return MaterialApp.router(
+          locale: locProvider.locale,
+          title: 'Story App',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [Locale('en', ''), Locale('id', '')],
+          routerConfig: appRouter.router,
+        );
+      },
     );
   }
 }

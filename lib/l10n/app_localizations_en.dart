@@ -76,4 +76,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout_cancel => 'Cancel';
+
+  @override
+  String get take_photo => 'Take Photo';
+
+  @override
+  String get select_language => 'Language';
 }

@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:story_app/l10n/app_localizations.dart';
+import '../../../core/utils/result_state.dart';
 import 'story_list_provider.dart';
 import '../../auth/auth_provider.dart';
+import '../../settings/localization_provider.dart';
 import '../../widgets/story_card.dart';
 
 class StoryListPage extends StatelessWidget {
@@ -97,6 +99,24 @@ class StoryListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(l10n.stories_title),
         actions: [
+          Consumer<LocalizationProvider>(
+            builder: (context, locProvider, child) {
+              return PopupMenuButton<Locale>(
+                icon: const Icon(Icons.language),
+                onSelected: (locale) => locProvider.setLocale(locale),
+                itemBuilder: (_) => const [
+                  PopupMenuItem(
+                    value: Locale('id'),
+                    child: Text('🇮🇩 Indonesia'),
+                  ),
+                  PopupMenuItem(
+                    value: Locale('en'),
+                    child: Text('🇺🇸 English'),
+                  ),
+                ],
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () => context.push('/stories/add'),
