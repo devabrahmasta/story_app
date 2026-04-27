@@ -8,7 +8,6 @@ import 'package:story_app/l10n/app_localizations.dart';
 import 'package:camera/camera.dart';
 import 'add_story_provider.dart';
 import '../list/story_list_provider.dart';
-import 'camera_screen.dart';
 
 class AddStoryPage extends StatefulWidget {
   const AddStoryPage({super.key});
@@ -56,10 +55,7 @@ class _AddStoryPageState extends State<AddStoryPage> {
   Future<void> _openCamera() async {
     final cameras = await availableCameras();
     if (!mounted) return;
-    final XFile? result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => CameraScreen(cameras: cameras)),
-    );
+    final XFile? result = await context.push<XFile>('/camera', extra: cameras);
     if (result != null && mounted) {
       final dir = Directory.systemTemp;
       final targetPath =
@@ -97,7 +93,7 @@ class _AddStoryPageState extends State<AddStoryPage> {
                 leading: const Icon(Icons.camera_alt),
                 title: Text(l10n.camera_button),
                 onTap: () {
-                  Navigator.pop(context);
+                  context.pop();
                   _openCamera();
                 },
               ),
@@ -105,7 +101,7 @@ class _AddStoryPageState extends State<AddStoryPage> {
                 leading: const Icon(Icons.photo_library),
                 title: Text(l10n.gallery_button),
                 onTap: () {
-                  Navigator.pop(context);
+                  context.pop();
                   _pickImage(ImageSource.gallery);
                 },
               ),

@@ -1,8 +1,10 @@
+import 'package:camera/camera.dart';
 import 'package:go_router/go_router.dart';
 import '../../presentation/auth/auth_provider.dart';
 import '../../presentation/auth/login/login_page.dart';
 import '../../presentation/auth/register/register_page.dart';
 import '../../presentation/story/add/add_story_page.dart';
+import '../../presentation/story/add/camera_screen.dart';
 import '../../presentation/story/detail/story_detail_page.dart';
 import '../../presentation/story/list/story_list_page.dart';
 
@@ -56,6 +58,13 @@ class AppRouter {
             },
           ),
         ],
+      ),
+      GoRoute(
+        path: '/camera',
+        builder: (context, state) {
+          final cameras = state.extra as List<CameraDescription>? ?? [];
+          return CameraScreen(cameras: cameras);
+        },
       ),
     ],
   );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:go_router/go_router.dart';
 import 'package:story_app/l10n/app_localizations.dart';
 
 class CameraScreen extends StatefulWidget {
@@ -75,7 +76,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
     final image = await controller?.takePicture();
     if (mounted) {
-      Navigator.of(context).pop(image);
+      context.pop(image);
     }
   }
 

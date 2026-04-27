@@ -36,12 +36,12 @@ class _StoryListPageState extends State<StoryListPage> {
           content: Text(l10n.logout_confirm),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(dialogContext),
+              onPressed: () => context.pop(),
               child: Text(l10n.logout_cancel),
             ),
             FilledButton(
               onPressed: () {
-                Navigator.pop(dialogContext);
+                context.pop();
                 context.read<AuthProvider>().logout();
               },
               child: Text(l10n.logout_button),
